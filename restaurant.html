@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Restaurant Menu</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+    }
+
+    header {
+        background: #111;
+        color: white;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header h1 {
+        margin: 0;
+    }
+
+    .menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 30px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .card h3 {
+        margin: 10px 0 5px;
+    }
+
+    .price {
+        font-weight: bold;
+        color: green;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .buttons button {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .add {
+        background: orange;
+    }
+
+    .buy {
+        background: green;
+    }
+
+    .buttons button:hover {
+        opacity: 0.9;
+    }
+
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .popup-content {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .popup-content button {
+        margin-top: 15px;
+        padding: 8px 20px;
+        background: #111;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🍴 Restaurantify</h1>
+</header>
+
+<section class="menu">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+        <h3>Spicy Potato</h3>
+        <p class="price">₹120</p>
+        <div class="buttons">
+            <button class="add" onclick="addToCart()">Add to Cart</button>
+            <button class="buy" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e">
+        <h3>Pasta</h3>
+        <p class="price">₹150</p>
+        <div class="buttons">
+            <button class="add" onclick="addToCart()">Add to Cart</button>
+            <button class="buy" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://www.simplyrecipes.com/thmb/7KwExJ0ZbVEmlxBaMsgmrBTi9M4=/4667x3111/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Grilled-BBQ-Chicken-LEAD-10-03fd9892eaae4ce1a8a3f4c949657cfd.jpg">
+        <h3>Grill Chicken</h3>
+        <p class="price">₹200</p>
+        <div class="buttons">
+            <button class="add" onclick="addToCart()">Add to Cart</button>
+            <button class="buy" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://www.thespruceeats.com/thmb/9sjJKTJ1yw1BqtHv2Zayaj6Zt_k=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-639704020-5c4a63ecc9e77c00017bfebf.jpg">
+        <h3>Chicken Biriyani</h3>
+        <p class="price">₹150</p>
+        <div class="buttons">
+            <button class="add" onclick="addToCart()">Add to Cart</button>
+            <button class="buy" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images5.alphacoders.com/357/357914.jpg">
+        <h3>Pizza</h3>
+        <p class="price">₹190</p>
+        <div class="buttons">
+            <button class="add" onclick="addToCart()">Add to Cart</button>
+            <button class="buy" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://tse2.mm.bing.net/th/id/OIP._tgM80_g7K1ymkC1gpvxZAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3">
+        <h3>Chicken momos</h3>
+        <p class="price">₹250</p>
+        <div class="buttons">
+            <button class="add" onclick="addToCart()">Add to Cart</button>
+            <button class="buy" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://wallpapercave.com/wp/wp8485927.jpg">
+        <h3>Cheese Sandwich</h3>
+        <p class="price">₹100</p>
+        <div class="buttons">
+            <button class="add" onclick="addToCart()">Add to Cart</button>
+            <button class="buy" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://i.ytimg.com/vi/dHOAUxcyoPM/maxresdefault.jpg">
+        <h3>Fish fry</h3>
+        <p class="price">₹200</p>
+        <div class="buttons">
+            <button class="add" onclick="addToCart()">Add to Cart</button>
+            <button class="buy" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://khinskitchen.com/wp-content/uploads/2022/09/garlic-butter-prawns-03-768x768.jpg">
+        <h3>Garlic Butter Prawns</h3>
+        <p class="price">₹250</p>
+        <div class="buttons">
+            <button class="add" onclick="addToCart()">Add to Cart</button>
+            <button class="buy" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://tossncook.com/wp-content/uploads/Mutton-Bhuna.jpg">
+        <h3>Mutton Curry</h3>
+        <p class="price">₹270</p>
+        <div class="buttons">
+            <button class="add" onclick="addToCart()">Add to Cart</button>
+            <button class="buy" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+
+</section>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <h2>✅ Order Placed Successfully</h2>
+        <p>Your food will be delivered soon 🍽️</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+
+<script>
+    function addToCart() {
+        alert("Item added to cart 🛒");
+    }
+
+    function buyNow() {
+        document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
